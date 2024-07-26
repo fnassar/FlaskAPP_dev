@@ -49,3 +49,7 @@ def unoptimized():
 @app.route('/bar')
 def optimized():
     return render_template('optimized.html')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

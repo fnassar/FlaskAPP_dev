@@ -27,7 +27,8 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'secret string')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', prefix + os.path.join(app.root_path, 'data.db'))
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
+    'DATABASE_URL', prefix + os.path.join(app.root_path, 'data.db'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -166,7 +167,9 @@ class City(db.Model):
 class Country(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), unique=True)
-    capital = db.relationship('Capital', uselist=False)  # collection -> scalar
+    # capital = db.relationship('Capital', uselist=False)  # collection -> scalar
+    capital = db.relationship('Capital', uselist=False,
+                              back_populates='country', overlaps="capital")
 
     def __repr__(self):
         return '<Country %r>' % self.name
@@ -176,7 +179,9 @@ class Capital(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), unique=True)
     country_id = db.Column(db.Integer, db.ForeignKey('country.id'))
-    country = db.relationship('Country')  # scalar
+    # country = db.relationship('Country')  # scalar
+    country = db.relationship(
+        'Country', back_populates='capital', overlaps="country")
 
     def __repr__(self):
         return '<Capital %r>' % self.name
@@ -184,8 +189,10 @@ class Capital(db.Model):
 
 # many to many with association table
 association_table = db.Table('association',
-                             db.Column('student_id', db.Integer, db.ForeignKey('student.id')),
-                             db.Column('teacher_id', db.Integer, db.ForeignKey('teacher.id'))
+                             db.Column('student_id', db.Integer,
+                                       db.ForeignKey('student.id')),
+                             db.Column('teacher_id', db.Integer,
+                                       db.ForeignKey('teacher.id'))
                              )
 
 
@@ -257,7 +264,8 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50))
     body = db.Column(db.Text)
-    comments = db.relationship('Comment', back_populates='post', cascade='all, delete-orphan')  # collection
+    comments = db.relationship(
+        'Comment', back_populates='post', cascade='all, delete-orphan')  # collection
 
 
 class Comment(db.Model):
