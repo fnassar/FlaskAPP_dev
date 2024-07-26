@@ -1,4 +1,3 @@
-![Building & Testing](https://github.com/fnassar/FlaskAPP_dev/actions/workflows/tests.yaml/badge.svg)
 ![Continuous Deployment](https://github.com/fnassar/FlaskAPP_dev/actions/workflows/deploy.yaml/badge.svg)
 
 # Flask Examples
