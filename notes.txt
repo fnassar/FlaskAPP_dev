@@ -1,3 +1,0 @@
-- make sure to freeze requirements.txt (a new one)
-- make sure to `flask initdb` for the database app
-    - test db has warnings
