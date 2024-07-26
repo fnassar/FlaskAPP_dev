@@ -1,6 +1,30 @@
 ![Continuous Deployment](https://github.com/fnassar/FlaskAPP_dev/actions/workflows/deploy.yaml/badge.svg)
 
-# Flask Examples
+# Version Control and CI/CD Setup:
+This section is the main contents of the repository. It contains the Flask application and the CI/CD setup.
+- tests are completed for assets, cache, database.
+    - `pytest tests` will run all tests.
+- CI/CD is setup using GitHub Actions.
+    - The CI/CD pipeline is setup to run on every push or pull_request to the main branch.
+    - The pipeline will run the tests and deploy the application <i>Actual deployment is not setup, there is just an echo statment for a place holder as deployment is different depending on different hosts.</i>
+
+# Bash Scripting:
+- The contents of this section are in `/SQL`
+    - there is a:
+        - a sample sql file
+        - backup.sh script
+        - the backup folder `backup_directory/` is where the backups are stored
+
+
+# Terraform:
+- did not do this yet
+
+# Hosting:
+- Working on it
+
+
+
+# Flask Examples PREV DOCUMENATION
 
 Example applications for Flask beginners.
 
