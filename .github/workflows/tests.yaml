@@ -7,7 +7,7 @@ jobs:
         runs-on: ubuntu-latest
         defaults:
             run:
-                working-dir: ./
+                working-directory: .
         timeout-minutes: 5
         strategy:
             matrix:
