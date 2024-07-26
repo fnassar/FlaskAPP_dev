@@ -13,9 +13,12 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
 
+# app.debug = True
+
 app.config['SECRET_KEY'] = 'dev key'
 
-app.config['CACHE_TYPE'] = 'simple'
+# 'simple'
+app.config['CACHE_TYPE'] = 'flask_caching.backends.simplecache.SimpleCache'
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 cache = Cache(app)
