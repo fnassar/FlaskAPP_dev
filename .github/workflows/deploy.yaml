@@ -63,6 +63,11 @@ jobs:
                   username: ${{ secrets.DOCKER_USERNAME }}
                   password: ${{ secrets.DOCKER_PASSWORD }}
 
+            - name: Pull previous image
+              run: |
+                  docker pull ${{ secrets.DOCKER_USERNAME }}/flaskapp_dev_web:latest || true
+                  docker tag ${{ secrets.DOCKER_USERNAME }}/flaskapp_dev_web:latest ${{ secrets.DOCKER_USERNAME }}/flaskapp_dev_web:previous || true
+
             - name: Build and push Docker images
               uses: docker/build-push-action@v3
               with:
