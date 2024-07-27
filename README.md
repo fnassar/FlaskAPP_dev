@@ -20,7 +20,8 @@ This section is the main contents of the repository. It contains the Flask appli
 - did not do this yet
 
 # Hosting:
-- Working on it
+- The folder `nginx/` shows where I stopped.
+- I have an up-to-date docker-compose for it that still needs debugging, so I did not push it.
 
 
 
